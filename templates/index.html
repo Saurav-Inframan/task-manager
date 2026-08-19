@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+
+        <form action="{{ url_for('add_task') }}" method="POST" class="add-form">
+            <input type="text" name="title" placeholder="Add a new task..." required autofocus>
+            <button type="submit">Add</button>
+        </form>
+
+        {% if tasks %}
+        <ul class="task-list">
+            {% for task in tasks %}
+            <li class="task-item {{ 'completed' if task['completed'] else '' }}">
+                <span class="task-title">{{ task['title'] }}</span>
+                <div class="task-actions">
+                    <a href="{{ url_for('complete_task', task_id=task['id']) }}" class="btn btn-complete">
+                        {{ 'Undo' if task['completed'] else 'Done' }}
+                    </a>
+                    <a href="{{ url_for('delete_task', task_id=task['id']) }}" class="btn btn-delete"
+                       onclick="return confirm('Delete this task?');">
+                        Delete
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-state">No tasks yet. Add one above!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
