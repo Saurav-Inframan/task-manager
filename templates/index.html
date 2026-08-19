@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Task Manager</h1>
 
-        <form action="{{ url_for('add_task') }}" method="POST" class="add-form">
+        <form action="{{ url_for('task_manager.add_task') }}" method="POST" class="add-form">
             <input type="text" name="title" placeholder="Add a new task..." required autofocus>
             <button type="submit">Add</button>
         </form>
@@ -21,10 +21,10 @@
             <li class="task-item {{ 'completed' if task['completed'] else '' }}">
                 <span class="task-title">{{ task['title'] }}</span>
                 <div class="task-actions">
-                    <a href="{{ url_for('complete_task', task_id=task['id']) }}" class="btn btn-complete">
+                    <a href="{{ url_for('task_manager.complete_task', task_id=task['id']) }}" class="btn btn-complete">
                         {{ 'Undo' if task['completed'] else 'Done' }}
                     </a>
-                    <a href="{{ url_for('delete_task', task_id=task['id']) }}" class="btn btn-delete"
+                    <a href="{{ url_for('task_manager.delete_task', task_id=task['id']) }}" class="btn btn-delete"
                        onclick="return confirm('Delete this task?');">
                         Delete
                     </a>
