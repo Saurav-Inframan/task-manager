@@ -6,6 +6,7 @@ services:
     task-manager:
         type: web
         port: 8000
+        domain: task-manager.inframan.cloud
         path_prefix: /
         node_pool: application-pool
         scaling:
