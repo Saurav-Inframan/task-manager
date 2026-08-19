@@ -1,12 +1,11 @@
 # Managed by Inframan — generated from console config. Edits here are the source of truth.
 version: v1
 # immutable — managed by Inframan, do not edit
-application: task-manager
+application: task-manager-saurav
 services:
     task-manager:
         type: web
         port: 8000
-        domain: task-manager.inframan.cloud
         path_prefix: /
         node_pool: application-pool
         scaling:
