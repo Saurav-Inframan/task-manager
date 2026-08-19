@@ -8,7 +8,7 @@ services:
         port: 8000
         domain: task-manager.inframan.cloud
         path_prefix: /saurav
-        path_rewrite: /saurav/
+        path_rewrite: /
         node_pool: application-pool
         scaling:
             type: concurrency
@@ -21,4 +21,3 @@ services:
         build:
             method: docker
             dockerfile: ./Dockerfile
-        path: ""
