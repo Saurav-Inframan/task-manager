@@ -8,6 +8,7 @@ services:
         port: 8000
         domain: task-manager.inframan.cloud
         path_prefix: /saurav
+        path_rewrite: /saurav/
         node_pool: application-pool
         scaling:
             type: concurrency
